@@ -15,7 +15,7 @@ then
   echo "= Install Extra Packages for Enterprise Linux (EPEL)."
   yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
   echo "= Install Remi's RPM repository."
-  yum install https://rpms.remirepo.net/enterprise/remi-release-6.rpm
+  yum install https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/remi-release-6.rpm
   echo "= Install MariaDB repo."
   wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/MariaDB-10.3-CentOS-6-x86_64.repo
   yum makecache
@@ -31,7 +31,7 @@ then
   echo "= Install Extra Packages for Enterprise Linux (EPEL)."
   yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
   echo "= Install Remi's RPM repository."
-  yum install https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+  yum install https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/remi-release-7.rpm
   echo "= Install MariaDB repo."
   wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/MariaDB-10.3-CentOS-7-x86_64.repo
   yum makecache
