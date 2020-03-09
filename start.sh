@@ -8,7 +8,7 @@ yum install wget yum-utils -y
 mv /etc/yum.repos.d /etc/yum.repos.d.back
 mkdir /etc/yum.repos.d
 ver=`rpm -q centos-release|cut -d- -f3`
-if [ $ver -eq 6 ] ||  [ $ver -eq 7 ];
+if [ $ver -eq 6 ] || [ $ver -eq 7 ];
 then
   echo "= Install CentOS Base REPO."
   wget -O /etc/yum.repos.d/CentOS-Base.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-6.repo
