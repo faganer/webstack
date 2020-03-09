@@ -2,7 +2,7 @@
 
 ## 一、介绍
 
-Web Stack是CentOS下安装PHP、MariaDB、Apache的shell。
+Web Stack是CentOS 6/7/8下安装PHP 7.3、MariaDB 5.5/10.1/10.2/10.3/10.4、Apache的shell。
 
 ## 二、安装
 
