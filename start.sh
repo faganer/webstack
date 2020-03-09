@@ -23,7 +23,7 @@ if [ $ver -eq 6 ]; then
   yum install ImageMagick mod_ssl sendmail unzip crontabs php php-bcmath php-cli php-common php-dba php-devel php-embedded php-enchant php-pecl-mcrypt php-pecl-imagick php-pecl-libsodium php-fpm php-gd php-intl php-ldap php-mbstring php-mysql php-mysqlnd php-odbc php-pdo php-pear php-pecl-memcache php-pgsql php-process php-pspell php-recode php-snmp php-soap php-xml php-xmlrpc php-opcache MariaDB-server MariaDB-client -y --skip-broken
   service httpd restart && service mysql restart
   mysql_secure_installation
-elif [ $ver -eq 7 ]; then
+elif [ $ver -eq 7 ] || [ $ver -eq 8 ]; then
   echo "= Please select the MariaDB version."
   MariaDBVerOptions="10.3 10.4"
   select MariaDBVer in $MariaDBVerOptions;do
@@ -41,5 +41,5 @@ elif [ $ver -eq 7 ]; then
   service httpd restart && service mysql restart
   mysql_secure_installation
 else
-  echo "Your system version is not CentOS 6 or 7, this program does not support it."
+  echo "Your system version is not CentOS 6/7/8, this program does not support it."
 fi
