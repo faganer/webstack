@@ -1,4 +1,6 @@
 #!/bin/bash
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 echo "==============================="
 echo "=";
 echo "= Start installing LAMP (Linux, Apache, PHP, MariaDB)."
@@ -6,13 +8,17 @@ echo "="
 echo "==============================="
 yum remove epel* remi* -y
 yum install wget yum-utils -y
-mv /etc/yum.repos.d /etc/yum.repos.d.back
+DATE=`date +%F | sed 's/-//g'``date +%T | sed 's/://g'`
+mv /etc/yum.repos.d /etc/yum.repos.d.back.$DATE
 mkdir /etc/yum.repos.d
 ver=`rpm -q centos-release|cut -d- -f3`
 if [ $ver -eq 6 ]; then
-  echo "= Please select the MariaDB version."
+  echo "Please select the MariaDB version: "
+  echo "";
   MariaDBVerOptions="5.5 10.1 10.2 10.3"
   select MariaDBVer in $MariaDBVerOptions;do
+  break;
+  done
   echo "= Install CentOS Base REPO."
   wget -O /etc/yum.repos.d/CentOS-Base.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver.repo
   echo "= Install Extra Packages for Enterprise Linux (EPEL)."
@@ -27,9 +33,11 @@ if [ $ver -eq 6 ]; then
   service httpd restart && service mysql restart
   mysql_secure_installation
 elif [ $ver -eq 7 ]; then
-  echo "= Please select the MariaDB version."
+  echo "Please select the MariaDB version: "
   MariaDBVerOptions="5.5 10.1 10.2 10.3 10.4"
   select MariaDBVer in $MariaDBVerOptions;do
+  break
+  done
   echo "= Install CentOS Base REPO."
   wget -O /etc/yum.repos.d/CentOS-Base.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver.repo
   echo "= Install Extra Packages for Enterprise Linux (EPEL)."
@@ -44,9 +52,11 @@ elif [ $ver -eq 7 ]; then
   service httpd restart && service mysql restart
   mysql_secure_installation
 elif [ $ver -eq 8 ]; then
-  echo "= Please select the MariaDB version."
+  echo "Please select the MariaDB version: "
   MariaDBVerOptions="10.3 10.4"
   select MariaDBVer in $MariaDBVerOptions;do
+  break
+  done
   echo "= Install CentOS Base REPO."
   wget -O /etc/yum.repos.d/CentOS-Base.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver.repo
   echo "= Install Extra Packages for Enterprise Linux (EPEL)."
