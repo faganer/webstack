@@ -15,3 +15,26 @@ curl -O http://cdn.jsdelivr.net/gh/faganer/webstack@master/start.sh
 chmod 777 start.sh
 ./start.sh
 ```
+
+## 三、MySQL密码
+
+### 1、初始密码
+安装会全自动生成12位字母与数字组成的随机密码，注意安装结束的密码提示：
+
+```txt
+"The MySQL initialization password is: 随机密码"
+```
+
+如果忘记，请使用：
+
+### 2、设置密码
+
+```Shell
+./mysql_secure.sh 'your_new_root_password'
+```
+
+### 3、重设密码
+
+```Shell
+./mysql_secure.sh 'your_old_root_password' 'your_new_root_password'
+```
