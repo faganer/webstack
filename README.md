@@ -2,9 +2,11 @@
 
 ## 一、介绍
 
-Web Stack是CentOS 6/7/8下安装PHP 7.3、MariaDB 5.5/10.1/10.2/10.3/10.4、Apache的脚本。
+Web Stack是CentOS 6/7/8下安装PHP 7.3、MariaDB 5.5/10.1/10.2/10.3/10.4、Apache/nginx的脚本。
 
 已测试环境：[阿里云](https://www.aliyun.li/fz0w)，[腾讯云](https://url.cn/5u5pGTn)。
+
+免责声明：仅用于研究学习，切勿用在生产环境。
 
 ## 二、安装
 
