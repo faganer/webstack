@@ -85,7 +85,7 @@ if [ $confirm == "yes" ]; then
     elif [ $ver -eq 8 ]; then
 
       # MariaDB
-      echo "Please select the MariaDB version: "
+      echo "= Please select the MariaDB version: "
       echo "";
       MariaDBVerOptions="10.3 10.4"
       select MariaDBVer in $MariaDBVerOptions;do
@@ -126,6 +126,7 @@ if [ $confirm == "yes" ]; then
       # lnmp
       yum makecache
       yum-config-manager --enable remi remi-php73
+      echo "= Please choose nginx stable or mainline packages: "
       select nginx in "stable" "mainline";do
         break;
       done
