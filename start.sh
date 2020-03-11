@@ -15,28 +15,30 @@ done
 
 # 2. System and user rights are correct.
 if [ $confirm == "yes" ]; then
+
+  echo "= Please choose to install Apache or nginx?"
   select type in "Apache" "nginx";do
     break;
   done
-  
-  # 2.1 Remove epil, remi.
-  yum remove epel* remi* -y
-
-  # 2.2 Install wget, yum-utils.
-  yum install wget yum-utils -y
-
-  # 2.3 Backup repos.
-  DATE=`date +%F | sed 's/-//g'``date +%T | sed 's/://g'`
-  mv /etc/yum.repos.d /etc/yum.repos.d.back.$DATE
-  mkdir /etc/yum.repos.d
-
-  # 2.4 Determine the system version.
-  ver=`rpm -q centos-release|cut -d- -f3`
 
   # 2.5 The choice is Apache or nginx.
   if [ $type = "Apache" ] || [ $type = "nginx" ]; then
 
     # 2.5.1 Both Apache and nginx are executed.
+
+    # Remove epil, remi.
+    yum remove epel* remi* -y
+
+    # Install wget, yum-utils.
+    yum install wget yum-utils -y
+
+    # Backup repos.
+    DATE=`date +%F | sed 's/-//g'``date +%T | sed 's/://g'`
+    mv /etc/yum.repos.d /etc/yum.repos.d.back.$DATE
+    mkdir /etc/yum.repos.d
+
+    # Determine the system version.
+    ver=`rpm -q centos-release|cut -d- -f3`
 
     # CentOS repo.
     echo "= Install CentOS Base REPO."
