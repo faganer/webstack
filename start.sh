@@ -52,61 +52,55 @@ if [ $confirm == "yes" ]; then
     echo "= Install Remi's RPM repository."
     yum install https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/remi-release-$ver.rpm -y
 
+    # CentOS 6
+    if [ $ver -eq 6 ]; then
+
+      # MariaDB
+      echo "= Please select the MariaDB version: "
+      echo "";
+      MariaDBVerOptions="5.5 10.1 10.2 10.3"
+      select MariaDBVer in $MariaDBVerOptions;do
+      break;
+      done
+      echo "= Install MariaDB "$MariaDBVer "repo."
+      echo "";
+      wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
+
+    # CentOS 7
+    elif [ $ver -eq 7 ]; then
+
+      # MariaDB
+      echo "= Please select the MariaDB version: "
+      echo "";
+      MariaDBVerOptions="5.5 10.1 10.2 10.3 10.4"
+      select MariaDBVer in $MariaDBVerOptions;do
+      break
+      done
+      echo "= Install MariaDB "$MariaDBVer "repo."
+      echo "";
+      wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
+
+    # CentOS 8
+    elif [ $ver -eq 8 ]; then
+
+      # MariaDB
+      echo "Please select the MariaDB version: "
+      echo "";
+      MariaDBVerOptions="10.3 10.4"
+      select MariaDBVer in $MariaDBVerOptions;do
+      break
+      done
+      echo "= Install MariaDB "$MariaDBVer "repo."
+      echo "";
+      wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
+
+    fi
+
     # 2.5.2 Choose Apache.
     if [ $type = "Apache" ]; then
 
       # PHP extension
       phpExtApache="php php-bcmath php-cli php-common php-dba php-devel php-embedded php-enchant php-gd php-imap php-intl php-json php-ldap php-mbstring php-mysqlnd php-odbc php-opcache php-pdo php-pecl-mcrypt php-pecl-imagick php-pgsql php-process php-pspell php-recode php-snmp php-soap php-tidy php-xml php-xmlrpc"
-
-      # CentOS 6
-      if [ $ver -eq 6 ]; then
-
-        # MariaDB
-        echo "Please select the MariaDB version: "
-        echo "";
-        MariaDBVerOptions="5.5 10.1 10.2 10.3"
-        select MariaDBVer in $MariaDBVerOptions;do
-        break;
-        done
-        echo "= Install MariaDB "$MariaDBVer "repo."
-        wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
-
-        # lamp
-        yum makecache
-        yum-config-manager --enable remi remi-php73
-        yum install $phpExtApache ImageMagick mod_ssl sendmail unzip crontabs MariaDB-server MariaDB-client -y --skip-broken
-
-        # Restart httpd and mysql.
-        service httpd restart && service mysql restart
-
-        # Config MySQL.
-        mysql_secure_installation
-
-      # CentOS 7
-      elif [ $ver -eq 7 ]; then
-
-        # MariaDB
-        echo "Please select the MariaDB version: "
-        MariaDBVerOptions="5.5 10.1 10.2 10.3 10.4"
-        select MariaDBVer in $MariaDBVerOptions;do
-        break
-        done
-        echo "= Install MariaDB "$MariaDBVer "repo."
-        wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
-
-      # CentOS 8
-      elif [ $ver -eq 8 ]; then
-
-        # MariaDB
-        echo "Please select the MariaDB version: "
-        MariaDBVerOptions="10.3 10.4"
-        select MariaDBVer in $MariaDBVerOptions;do
-        break
-        done
-        wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
-        echo "= Install CentOS Base REPO."
-        
-      fi
 
       # lamp
       yum makecache
@@ -127,45 +121,6 @@ if [ $confirm == "yes" ]; then
 
       # nginx.
       wget -O /etc/yum.repos.d/nginx.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/nginx.repo
-
-      # CentOS 6
-      if [ $ver -eq 6 ]; then
-
-        # MariaDB
-        echo "Please select the MariaDB version: "
-        echo "";
-        MariaDBVerOptions="5.5 10.1 10.2 10.3"
-        select MariaDBVer in $MariaDBVerOptions;do
-        break;
-        done
-        echo "= Install MariaDB "$MariaDBVer "repo."
-        wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
-
-      # CentOS 7
-      elif [ $ver -eq 7 ]; then
-
-        # MariaDB
-        echo "Please select the MariaDB version: "
-        MariaDBVerOptions="5.5 10.1 10.2 10.3 10.4"
-        select MariaDBVer in $MariaDBVerOptions;do
-        break
-        done
-        echo "= Install MariaDB "$MariaDBVer "repo."
-        wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
-
-      # CentOS 8
-      elif [ $ver -eq 8 ]; then
-
-        # MariaDB
-        echo "Please select the MariaDB version: "
-        MariaDBVerOptions="10.3 10.4"
-        select MariaDBVer in $MariaDBVerOptions;do
-        break
-        done
-        wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
-        echo "= Install CentOS Base REPO."
-
-      fi
 
       # lnmp
       yum makecache
