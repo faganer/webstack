@@ -126,7 +126,7 @@ if [ $confirm == "yes" ]; then
       # lnmp
       yum makecache
       yum-config-manager --enable remi remi-php73
-      echo "= Please choose nginx stable or mainline packages: "
+      echo "= Please choose nginx stable or mainline packages(default is stable): "
       select nginx in "stable" "mainline";do
         break;
       done
@@ -134,9 +134,10 @@ if [ $confirm == "yes" ]; then
         yum-config-manager --enable nginx-mainline
       fi
       yum install $phpExtNginx ImageMagick mod_ssl sendmail unzip crontabs MariaDB-server MariaDB-client nginx -y --skip-broken
+      yum remove httpd -y
 
-      # Restart httpd and mysql.
-      service httpd restart && service mysql restart
+      # Restart nginx and mysql.
+      service nginx restart && service mysql restart
 
       # Config MySQL.
       mysql_secure_installation
