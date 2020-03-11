@@ -6,9 +6,10 @@ export PATH
 echo "==============================="
 echo "="
 echo "= Start installing LAMP (Linux, Apache, PHP, MariaDB)."
-echo "= Make sure the system is CentOS 6/7/8 and the permissions are root. Do you want to start the installation?"
 echo "="
 echo "==============================="
+echo ""
+echo "= Make sure the system is CentOS 6/7/8 and the permissions are root. Do you want to start the installation?"
 select confirm in "yes" "no";do
   break;
 done
