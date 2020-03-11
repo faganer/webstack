@@ -21,6 +21,9 @@ while true;do
   case $confirm in
       [yY][eE][sS]|[yY])
 
+        # Initialize the MySQL password.
+        MySQLPasswd=`tr -cd '[:alnum:]' </dev/urandom | head -c 12`
+
         # Determine the system version.
         ver=`rpm -q centos-release|cut -d- -f3`
 
@@ -163,7 +166,7 @@ while true;do
           fi
 
           # 2.8 Install Apache or nginx.
-          echo "= Please choose to install Apache or nginx?"
+          echo "= Please choose to install Apache or nginx:"
           echo " "
           select type in "Apache" "nginx";do
             break;
@@ -186,7 +189,12 @@ while true;do
               service httpd restart && service mysql restart
 
               # Config MySQL.
-              mysql_secure_installation
+              #mysql_secure_installation
+              wget http://cdn.jsdelivr.net/gh/faganer/webstack@master/mysql_secure.sh
+              chmod 777 mysql_secure.sh
+              ./mysql_secure.sh $MySQLPasswd
+              echo "The MySQL initialization password is: $MySQLPasswd"
+
             
             # 2 Choose nginx.
             elif [ $type = "nginx" ]; then
@@ -214,8 +222,11 @@ while true;do
               service nginx restart && service php-fpm restart && service mysql restart
 
               # Config MySQL.
-              mysql_secure_installation
-
+              #mysql_secure_installation
+              wget http://cdn.jsdelivr.net/gh/faganer/webstack@master/mysql_secure.sh
+              chmod 777 mysql_secure.sh
+              ./mysql_secure.sh $MySQLPasswd
+              echo "The MySQL initialization password is: $MySQLPasswd"
             fi
 
           # 2.8.2 No choice of Apache or nginx.
