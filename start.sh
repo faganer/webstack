@@ -137,7 +137,7 @@ if [ $confirm == "yes" ]; then
       yum remove httpd -y
 
       # Restart nginx and mysql.
-      service nginx restart && service mysql restart
+      service nginx restart && service php-fpm restart && service mysql restart
 
       # Config MySQL.
       mysql_secure_installation
