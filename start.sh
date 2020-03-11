@@ -21,13 +21,15 @@ while true;do
   case $confirm in
       [yY][eE][sS]|[yY])
 
-        # Initialize the MySQL password.
-        MySQLPasswd=`tr -cd '[:alnum:]' </dev/urandom | head -c 12`
-
         # Determine the system version.
         ver=`rpm -q centos-release|cut -d- -f3`
 
         if [ $ver -eq 6 ] || [ $ver -eq 7 ] || [ $ver -eq 8 ]; then
+
+          # 2.0 Initialize the MySQL password.
+          MySQLPasswd=`tr -cd '[:alnum:]' </dev/urandom | head -c 12`
+          wget http://cdn.jsdelivr.net/gh/faganer/webstack@master/mysql_secure.sh
+          chmod 777 mysql_secure.sh
 
           # 2.1 Remove epil, remi.
           yum remove epel* remi* -y
@@ -190,12 +192,11 @@ while true;do
 
               # Config MySQL.
               #mysql_secure_installation
-              wget http://cdn.jsdelivr.net/gh/faganer/webstack@master/mysql_secure.sh
-              chmod 777 mysql_secure.sh
               ./mysql_secure.sh $MySQLPasswd
+              echo "Successfully installed."
               echo "The MySQL initialization password is: $MySQLPasswd"
+              exit 0
 
-            
             # 2 Choose nginx.
             elif [ $type = "nginx" ]; then
               
@@ -223,10 +224,10 @@ while true;do
 
               # Config MySQL.
               #mysql_secure_installation
-              wget http://cdn.jsdelivr.net/gh/faganer/webstack@master/mysql_secure.sh
-              chmod 777 mysql_secure.sh
               ./mysql_secure.sh $MySQLPasswd
+              echo "Successfully installed."
               echo "The MySQL initialization password is: $MySQLPasswd"
+              exit 0
             fi
 
           # 2.8.2 No choice of Apache or nginx.
@@ -240,6 +241,8 @@ while true;do
         # System version does not match.
         else
           echo "= System version does not match. Must be CentOS 6/7/8."
+          echo "Exited."
+          exit 0
         fi
       ;;
 
