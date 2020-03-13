@@ -49,14 +49,8 @@ chmod 777 install.sh
 
 卸载后，不会删除MariaDB生成的数据库数据，如果要完全卸载，需要手动删除mysql信息。
 
-查询已有mysql数据：
+查询已有mysql数据并删除：
 
 ```Shell
-find / -name mysql
-```
-
-然后使用 rm -rf 命令删除：
-
-```Shell
-rm -rf 目录|文件
+find / -name mysql | xargs rm -rf
 ```

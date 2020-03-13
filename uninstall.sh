@@ -23,15 +23,18 @@ if command -v nginx >/dev/null 2>&1; then
   echo "= Uninstalling nginx."
   sleep 2s
   yum remove nginx nginx-* -y
-elif command -v apachectl >/dev/null 2>&1; then 
+fi
+if command -v apachectl >/dev/null 2>&1; then 
   echo "= Uninstalling Apache."
   sleep 2s
   yum remove httpd httpd-* -y
-elif command -v php >/dev/null 2>&1; then 
+fi
+if command -v php >/dev/null 2>&1; then 
   echo "= Uninstalling PHP."
   sleep 2s
   yum remove php php-* -y
-elif command -v mysql >/dev/null 2>&1; then 
+fi
+if command -v mysql >/dev/null 2>&1; then 
   echo "= Uninstalling MariaDB."
   sleep 2s
   yum remove MariaDB MariaDB-* -y
