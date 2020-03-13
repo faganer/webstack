@@ -27,12 +27,8 @@ while true;do
         if [ $ver -eq 6 ] || [ $ver -eq 7 ] || [ $ver -eq 8 ]; then
 
           # 2.0 Initialize the MySQL password.
-          MySQLF =`find -name mysql_secure.sh`
-          if [ -z "$MySQLF" ]; then
-            MySQLPasswd=`tr -cd '[:alnum:]' </dev/urandom | head -c 12`
-            wget http://cdn.jsdelivr.net/gh/faganer/webstack@master/mysql_secure.sh
-            chmod 777 mysql_secure.sh
-          fi
+          MySQLPasswd=`tr -cd '[:alnum:]' </dev/urandom | head -c 12`
+          chmod 777 mysql_secure.sh
 
           # 2.1 Remove epil, remi.
           yum remove epel* remi* -y
@@ -48,7 +44,7 @@ while true;do
           # 2.4 CentOS repo.
           echo "= Install CentOS Base REPO."
           sleep 3s
-          wget -O /etc/yum.repos.d/CentOS-Base.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver.repo
+          \cp -a CentOS-$ver.repo /etc/yum.repos.d/CentOS-Base.repo
 
           # 2.5 EPEL.
           echo "= Install Extra Packages for Enterprise Linux (EPEL)."
@@ -70,7 +66,7 @@ while true;do
             break;
             done
             echo "= Install MariaDB "$MariaDBVer "repo."
-            wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
+            \cp -a MariaDB-$MariaDBVer.repo /etc/yum.repos.d/MariaDB.repo
 
             # PHP
             echo "= Please select the PHP version: "
@@ -104,7 +100,7 @@ while true;do
             break
             done
             echo "= Install MariaDB "$MariaDBVer "repo."
-            wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
+            \cp -a MariaDB-$MariaDBVer.repo /etc/yum.repos.d/MariaDB.repo
 
             # PHP
             echo "= Please select the PHP version: "
@@ -141,7 +137,7 @@ while true;do
             break
             done
             echo "= Install MariaDB "$MariaDBVer "repo."
-            wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
+            \cp -a MariaDB-$MariaDBVer.repo /etc/yum.repos.d/MariaDB.repo
 
             # PHP
             echo "= Please select the PHP version: "
@@ -204,7 +200,7 @@ while true;do
               phpExtNginx="php php-bcmath php-cli php-common php-dba php-devel php-embedded php-enchant php-fpm php-gd php-imap php-intl php-json php-ldap php-mbstring php-mysqlnd php-odbc php-opcache php-pdo php-mcrypt php-pecl-imagick php-pgsql php-process php-pspell php-recode php-snmp php-soap php-tidy php-xml php-xmlrpc"
 
               # nginx.
-              wget -O /etc/yum.repos.d/nginx.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/nginx.repo
+              \cp -a nginx.repo /etc/yum.repos.d/
 
               # lnmp
               yum makecache
