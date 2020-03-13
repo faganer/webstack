@@ -38,3 +38,25 @@ chmod 777 install.sh
 ```Shell
 ./mysql_secure.sh 'your_old_root_password' 'your_new_root_password'
 ```
+
+## 四、卸载
+
+安装成功后，会默认下载卸载程序：uninstall.sh。
+
+```Shell
+./uninstall.sh
+```
+
+卸载后，不会删除MariaDB生成的数据库数据，如果要完全卸载，需要手动删除mysql信息。
+
+查询已有mysql数据：
+
+```Shell
+find / -name mysql
+```
+
+然后使用 rm -rf 命令删除：
+
+```Shell
+rm -rf 目录|文件
+```
