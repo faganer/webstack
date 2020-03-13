@@ -27,9 +27,12 @@ while true;do
         if [ $ver -eq 6 ] || [ $ver -eq 7 ] || [ $ver -eq 8 ]; then
 
           # 2.0 Initialize the MySQL password.
-          MySQLPasswd=`tr -cd '[:alnum:]' </dev/urandom | head -c 12`
-          wget http://cdn.jsdelivr.net/gh/faganer/webstack@master/mysql_secure.sh
-          chmod 777 mysql_secure.sh
+          MySQLF =`find -name mysql_secure.sh`
+          if [ -z "$MySQLF" ]; then
+            MySQLPasswd=`tr -cd '[:alnum:]' </dev/urandom | head -c 12`
+            wget http://cdn.jsdelivr.net/gh/faganer/webstack@master/mysql_secure.sh
+            chmod 777 mysql_secure.sh
+          fi
 
           # 2.1 Remove epil, remi.
           yum remove epel* remi* -y
