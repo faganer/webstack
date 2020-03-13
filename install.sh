@@ -166,7 +166,6 @@ while true;do
 
           # 2.8 Install Apache or nginx.
           echo "= Please choose to install Apache or nginx:"
-          echo " "
           select type in "Apache" "nginx";do
             break;
           done
@@ -210,7 +209,6 @@ while true;do
               # lnmp
               yum makecache
               echo "= Please choose nginx stable or mainline packages(default is stable): "
-              echo " "
               select nginx in "stable" "mainline";do
                 break;
               done
