@@ -62,18 +62,15 @@ while true;do
 
             # MariaDB
             echo "= Please select the MariaDB version: "
-            echo " ";
             MariaDBVerOptions="5.5 10.1 10.2 10.3"
             select MariaDBVer in $MariaDBVerOptions;do
             break;
             done
             echo "= Install MariaDB "$MariaDBVer "repo."
-            echo " ";
             wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
 
             # PHP
             echo "= Please select the PHP version: "
-            echo " ";
             PHPVerOptions="7.0 7.1 7.2 7.3"
             select PHPVer in $PHPVerOptions;do
             break;
@@ -99,18 +96,15 @@ while true;do
 
             # MariaDB
             echo "= Please select the MariaDB version: "
-            echo " ";
             MariaDBVerOptions="5.5 10.1 10.2 10.3 10.4"
             select MariaDBVer in $MariaDBVerOptions;do
             break
             done
             echo "= Install MariaDB "$MariaDBVer "repo."
-            echo " ";
             wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
 
             # PHP
             echo "= Please select the PHP version: "
-            echo " ";
             PHPVerOptions="7.0 7.1 7.2 7.3 7.4"
             select PHPVer in $PHPVerOptions;do
             break;
@@ -139,18 +133,15 @@ while true;do
 
             # MariaDB
             echo "= Please select the MariaDB version: "
-            echo " ";
             MariaDBVerOptions="10.3 10.4"
             select MariaDBVer in $MariaDBVerOptions;do
             break
             done
             echo "= Install MariaDB "$MariaDBVer "repo."
-            echo " ";
             wget -O /etc/yum.repos.d/MariaDB.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo
 
             # PHP
             echo "= Please select the PHP version: "
-            echo " ";
             PHPVerOptions="7.2 7.3 7.4"
             select PHPVer in $PHPVerOptions;do
             break;
