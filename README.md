@@ -47,9 +47,7 @@ chmod 777 uninstall.sh
 ./uninstall.sh
 ```
 
-卸载后，不会删除MariaDB生成的数据库数据，如果要完全卸载，需要手动删除mysql信息。
-
-查询已有mysql数据并删除：
+卸载过程中如果选择“Y”，将会删除MariaDB生成的所有MySQL数据，如果选择“N”则不会删除，手动删除请用：
 
 ```Shell
 find / -name mysql | xargs rm -rf
