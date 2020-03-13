@@ -22,11 +22,13 @@ while true;do
         yum remove http httpd-* nginx nginx-* php php-* MariaDB MariaDB-* -y
         find / -name mysql | xargs rm -rf
         echo "= LAMP/LNMP uninstall successfully."
+        exit 0
       ;;
 
       [nN][oO]|[nN])
         yum remove http httpd-* nginx nginx-* php php-* MariaDB MariaDB-* -y
         echo "= LAMP/LNMP uninstall successfully."
+        exit 0
       ;;
 
       *)
