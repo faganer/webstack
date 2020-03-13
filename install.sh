@@ -66,7 +66,7 @@ while true;do
             break;
             done
             echo "= Install MariaDB "$MariaDBVer "repo."
-            \cp -a MariaDB-$MariaDBVer.repo /etc/yum.repos.d/MariaDB.repo
+            \cp -a CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo /etc/yum.repos.d/MariaDB.repo
 
             # PHP
             echo "= Please select the PHP version: "
@@ -100,7 +100,7 @@ while true;do
             break
             done
             echo "= Install MariaDB "$MariaDBVer "repo."
-            \cp -a MariaDB-$MariaDBVer.repo /etc/yum.repos.d/MariaDB.repo
+            \cp -a CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo /etc/yum.repos.d/MariaDB.repo
 
             # PHP
             echo "= Please select the PHP version: "
@@ -137,7 +137,7 @@ while true;do
             break
             done
             echo "= Install MariaDB "$MariaDBVer "repo."
-            \cp -a MariaDB-$MariaDBVer.repo /etc/yum.repos.d/MariaDB.repo
+            \cp -a CentOS-$ver-x86_64/MariaDB-$MariaDBVer.repo /etc/yum.repos.d/MariaDB.repo
 
             # PHP
             echo "= Please select the PHP version: "
