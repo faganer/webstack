@@ -11,9 +11,9 @@ Web Stack是CentOS 6/7/8下安装PHP 7.0/7.1/7.2/7.3/7.4、MariaDB 5.5/10.1/10.2
 ## 二、安装
 
 ```Shell
-curl -O http://cdn.jsdelivr.net/gh/faganer/webstack@master/start.sh
-chmod 777 start.sh
-./start.sh
+curl -O http://cdn.jsdelivr.net/gh/faganer/webstack@master/install.sh
+chmod 777 install.sh
+./install.sh
 ```
 
 ## 三、MySQL密码
