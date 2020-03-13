@@ -44,14 +44,17 @@ while true;do
 
           # 2.4 CentOS repo.
           echo "= Install CentOS Base REPO."
+          sleep 3s
           wget -O /etc/yum.repos.d/CentOS-Base.repo http://cdn.jsdelivr.net/gh/faganer/webstack@master/CentOS-$ver.repo
 
           # 2.5 EPEL.
           echo "= Install Extra Packages for Enterprise Linux (EPEL)."
+          sleep 3s
           yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$ver.noarch.rpm -y
 
           # 2.6 remi.
           echo "= Install Remi's RPM repository."
+          sleep 3s
           yum install https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/remi-release-$ver.rpm -y
 
           # 2.7.1 CentOS 6
@@ -195,6 +198,10 @@ while true;do
               ./mysql_secure.sh $MySQLPasswd
               echo "Successfully installed."
               echo "The MySQL initialization password is: $MySQLPasswd"
+
+              # Tips for success
+              echo "= LAMP install successfully."
+              sleep 3s
               exit 0
 
             # 2 Choose nginx.
@@ -227,7 +234,12 @@ while true;do
               ./mysql_secure.sh $MySQLPasswd
               echo "Successfully installed."
               echo "The MySQL initialization password is: $MySQLPasswd"
+              
+              # Tips for success
+              echo "= LAMP install successfully."
+              sleep 3s
               exit 0
+
             fi
 
           # 2.8.2 No choice of Apache or nginx.
