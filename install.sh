@@ -24,10 +24,6 @@ while true;do
         # Determine the system version.
         ver=`rpm -q centos-release|cut -d- -f3`
 
-        # Download and uninstall bash.
-        wget http://cdn.jsdelivr.net/gh/faganer/webstack@master/uninstall.sh
-        chmod 777 uninstall.sh
-
         if [ $ver -eq 6 ] || [ $ver -eq 7 ] || [ $ver -eq 8 ]; then
 
           # 2.0 Initialize the MySQL password.

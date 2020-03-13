@@ -41,9 +41,9 @@ chmod 777 install.sh
 
 ## 四、卸载
 
-安装成功后，会默认下载卸载程序：uninstall.sh。
-
 ```Shell
+curl -O http://cdn.jsdelivr.net/gh/faganer/webstack@master/uninstall.sh
+chmod 777 uninstall.sh
 ./uninstall.sh
 ```
 
