@@ -173,7 +173,7 @@ while true;do
             if [ $type = "Apache" ]; then
 
               # PHP extension
-              phpExtApache="php php-bcmath php-cli php-common php-dba php-devel php-embedded php-enchant php-gd php-imap php-intl php-json php-ldap php-mbstring php-mysqlnd php-odbc php-opcache php-pdo php-mcrypt php-pecl-imagick php-pgsql php-process php-pspell php-recode php-snmp php-soap php-tidy php-xml php-xmlrpc"
+              phpExtApache="php php-bcmath php-cli php-common php-dba php-devel php-embedded php-enchant php-gd php-imap php-intl php-json php-ldap php-mbstring php-mysqlnd php-odbc php-opcache php-pdo php-mcrypt php-pecl-imagick php-pecl-zip php-pgsql php-process php-pspell php-recode php-snmp php-soap php-tidy php-xml php-xmlrpc"
 
               # lamp
               yum makecache
@@ -197,7 +197,7 @@ while true;do
             elif [ $type = "nginx" ]; then
               
               # PHP extension
-              phpExtNginx="php php-bcmath php-cli php-common php-dba php-devel php-embedded php-enchant php-fpm php-gd php-imap php-intl php-json php-ldap php-mbstring php-mysqlnd php-odbc php-opcache php-pdo php-mcrypt php-pecl-imagick php-pgsql php-process php-pspell php-recode php-snmp php-soap php-tidy php-xml php-xmlrpc"
+              phpExtNginx="php php-bcmath php-cli php-common php-dba php-devel php-embedded php-enchant php-fpm php-gd php-imap php-intl php-json php-ldap php-mbstring php-mysqlnd php-odbc php-opcache php-pdo php-mcrypt php-pecl-imagick php-pecl-zip php-pgsql php-process php-pspell php-recode php-snmp php-soap php-tidy php-xml php-xmlrpc"
 
               # nginx.
               \cp -a nginx.repo /etc/yum.repos.d/
