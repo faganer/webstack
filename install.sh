@@ -95,7 +95,7 @@ while true;do
 
             # MariaDB
             echo "= Please select the MariaDB version: "
-            MariaDBVerOptions="5.5 10.1 10.2 10.3 10.4"
+            MariaDBVerOptions="5.5 10.1 10.2 10.3 10.4 10.5"
             select MariaDBVer in $MariaDBVerOptions;do
             break
             done
